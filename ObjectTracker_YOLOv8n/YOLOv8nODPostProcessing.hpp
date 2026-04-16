@@ -1,7 +1,7 @@
 #ifndef YOLOV8N_OD_POST_PROCESSING_HPP
 #define YOLOV8N_OD_POST_PROCESSING_HPP
 
-#include "DetectionResult.hpp"
+#include "PostProcessUtils.hpp"
 #include "YOLOv8nODModel.hpp"
 
 #include <forward_list>
@@ -25,29 +25,6 @@ namespace yolov8n_od
 #define YOLOV8N_OD_STRIDE16_BOX_TENSOR_INDEX	(1)		//[1, 256, 64] for YOLOv8n_256
 #define YOLOV8N_OD_STRIDE32_BOX_TENSOR_INDEX	(5)		//[1, 64, 64] for YOLOv8n_256
 
-	
-/**
- * Contains the x,y co-ordinates of a box centre along with the box width and height.
- */
-struct Box {
-	float x;
-	float y;
-	float w;
-	float h;
-};
-
-struct Detection {
-	Box bbox;
-	int strideIndex;
-	int anchorIndex;
-	int cls;
-	std::vector<float> prob;
-};
-
-struct AnchorBox {
-	float w;
-	float h;
-};
 	
 /**
  * @brief   Helper class to manage tensor post-processing for "yolov8n pose"
